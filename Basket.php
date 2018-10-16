@@ -20,7 +20,7 @@ class Basket
 
     /**
      * @param int $goodsId
-     *
+     * @param int $count
      */
     public function addGoods(int $goodsId, int $count = null)
     {
