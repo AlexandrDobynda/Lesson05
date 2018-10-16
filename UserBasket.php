@@ -6,7 +6,7 @@ namespace Lesson05;
  * Class UserBasket
  * @package Lesson05
  */
-class UserBasket extends BasketShow
+class UserBasket extends BasketPrices
 {
     /**
      * @var int $userId

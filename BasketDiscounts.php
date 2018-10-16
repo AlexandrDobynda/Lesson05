@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexandr
- * Date: 16.10.2018
- * Time: 16:13
- */
 
 namespace Lesson05;
 
@@ -12,7 +6,7 @@ namespace Lesson05;
  * Class BasketDiscounts
  * @package Lesson05
  */
-class BasketDiscounts extends Basket
+trait BasketDiscounts
 {
     /**
      * @return int
@@ -33,7 +27,7 @@ class BasketDiscounts extends Basket
     /**
      * @return float|int
      */
-    public function getFullDiscount()
+    public function getUserAndSaleDiscounts()
     {
         return (100 - $this->getUserDiscount()) / 100 * (100 - $this->getSaleDiscount()) / 100;
     }
