@@ -17,12 +17,18 @@ class Basket
      * @param int $goodsId
      * @param int $count
      */
+    public function loadProductFromDB(int $productId,int $count)
+    {
+        return new Product($count);
+    }
+
+    /**
+     * @param int $goodsId
+     * @param int $count
+     */
     public function addGoods(int $goodsId, int $count)
     {
-        /**
-         * Берет из базы товар по ID.
-         */
-        $this->goods[] =  new Product($count);
+        $this->goods[] = $this->loadProductFromDB($goodsId, $count);
     }
 
 

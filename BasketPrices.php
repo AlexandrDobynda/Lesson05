@@ -58,6 +58,7 @@ class BasketPrices extends Basket
     public function showProductsSum()
     {
         $this->calculateProductsSum();
+
         echo 'Total: ' . $this->sum . '/ with discount: ' . $this->discountSum . '<br>';
         echo 'Products count: ' . $this->count;
         echo '<br> <br>';
