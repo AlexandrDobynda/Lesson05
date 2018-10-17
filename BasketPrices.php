@@ -32,9 +32,9 @@ class BasketPrices extends Basket
     public function calculateProductsSum()
     {
         foreach ($this->goods as $good => $tag) {
-            $this->count++;
-            $this->sum += $tag['price'];
-            $this->discountSum += $tag['discount prise'];
+            $this->count += $tag['quantity'];
+            $this->sum += $tag['price'] * $tag['quantity'];
+            $this->discountSum += $tag['discount prise'] * $tag['quantity'];
         }
     }
 
@@ -43,8 +43,9 @@ class BasketPrices extends Basket
         $this->calculateDiscountPrices();
 
         foreach ($this->goods as $good => $tag) {
-            echo '#' . $good . ': ' . $tag['productName'] . ', full price: ' . $tag['price'];
-            echo '/with discount: ' . $tag['discount prise'] . '<br>';
+            echo '#' . $good . ': ' . $tag['productName'] . '(quantity:' . $tag['quantity'] . ')';
+            echo ', full price: ' . $tag['price'] * $tag['quantity'];
+            echo '/with discount: ' . $tag['discount prise'] * $tag['quantity'] . '<br>';
         }
         echo '<br>';
     }

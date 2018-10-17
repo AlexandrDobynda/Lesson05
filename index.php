@@ -15,9 +15,9 @@ $test2 = new UserBasket(1);
 $test2->addGoods(3, 2);
 
 
-$test->addGoods(1);
+$test->addGoods(1,1);
 $test->addGoods(3, 2);
-$test->addGoods(4);
+$test->addGoods(4,1);
 
 $test2->showProductsList();
 $test2->showProductsSum();
@@ -25,7 +25,3 @@ $test2->showProductsSum();
 $test->showProductsList();
 $test->showProductsSum();
 
-echo '<pre>';
-print_r($test);
-echo count((array)$test);
-echo '</pre>';

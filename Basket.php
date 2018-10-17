@@ -2,6 +2,7 @@
 
 namespace Lesson05;
 
+require_once ('Storage.php');
 /**
  * Class Basket
  * @package Lesson05
@@ -15,41 +16,26 @@ class Basket
 
     public function __construct()
     {
-        $this->goods = new \stdClass();
+        $this->goods = new Storage();
     }
 
     /**
      * @param int $goodsId
      * @param int $count
      */
-    public function addGoods(int $goodsId, int $count = null)
+    public function addGoods(int $goodsId, int $count)
     {
         /**
          * Берет из базы товар по ID.
          */
-        if ($count == null) {
-            $j = count((array)$this->goods);
-            $this->goods->{$j + 1} = [
-                'id' => 1,
-                'productName' => 'nameSample',
-                'price' => 500,
-                'discount, %' => 5
-            ];
-        }
+        $this->goods[] =[
+            'id' => 1,
+            'productName' => 'nameSample',
+            'price' => 500,
+            'discount, %' => 5,
+            'quantity' => $count
 
-        if ($count) {
-            $j = count((array)$this->goods);
-
-            for ($i = 1; $i <= $count; $i++) {
-
-                $this->goods->{$j + $i} = [
-                    'id' => 1,
-                    'productName' => 'nameSample',
-                    'price' => 500,
-                    'discount, %' => 5
-                ];
-            }
-        }
+        ];
     }
 }
 
