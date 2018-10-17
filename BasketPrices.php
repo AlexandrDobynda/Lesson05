@@ -23,18 +23,18 @@ class BasketPrices extends Basket
     public function calculateDiscountPrices()
     {
         foreach ($this->goods as $good => &$tag) {
-            $discountPrice = round($tag['price'] * $this->getUserAndSaleDiscounts() * (100 - $tag['discount, %']) / 100,
+            $discountPrice = round($tag->price * $this->getUserAndSaleDiscounts() * (100 - $tag->discount) / 100,
                 2);
-            $tag['discount prise'] = $discountPrice;
+            $tag->discountPrise = $discountPrice;
         }
     }
 
     public function calculateProductsSum()
     {
         foreach ($this->goods as $good => $tag) {
-            $this->count += $tag['quantity'];
-            $this->sum += $tag['price'] * $tag['quantity'];
-            $this->discountSum += $tag['discount prise'] * $tag['quantity'];
+            $this->count += $tag->quantity;
+            $this->sum += $tag->price * $tag->quantity;
+            $this->discountSum += $tag->discountPrise * $tag->quantity;
         }
     }
 
@@ -43,9 +43,9 @@ class BasketPrices extends Basket
         $this->calculateDiscountPrices();
 
         foreach ($this->goods as $good => $tag) {
-            echo '#' . $good . ': ' . $tag['productName'] . '(quantity:' . $tag['quantity'] . ')';
-            echo ', full price: ' . $tag['price'] * $tag['quantity'];
-            echo '/with discount: ' . $tag['discount prise'] * $tag['quantity'] . '<br>';
+            echo '#' . $good . ': ' . $tag->productName . '(quantity:' . $tag->quantity . ')';
+            echo ', full price: ' . $tag->price * $tag->quantity;
+            echo '/with discount: ' . $tag->discountPrise * $tag->quantity . '<br>';
         }
         echo '<br>';
     }
@@ -59,5 +59,14 @@ class BasketPrices extends Basket
         echo 'Total: ' . $this->sum . '/ with discount: ' . $this->discountSum . '<br>';
         echo 'Products count: ' . $this->count;
         echo '<br> <br>';
+    }
+
+
+    public function showTest()
+    {
+        foreach ($this->goods as $good => $tag)
+        {
+            echo $tag->price;
+        }
     }
 }
