@@ -60,13 +60,4 @@ class BasketPrices extends Basket
         echo 'Products count: ' . $this->count;
         echo '<br> <br>';
     }
-
-
-    public function showTest()
-    {
-        foreach ($this->goods as $good => $tag)
-        {
-            echo $tag->price;
-        }
-    }
 }
