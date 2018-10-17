@@ -19,7 +19,7 @@ class Basket
      */
     public function loadProductFromDB(int $productId,int $count)
     {
-        return new Product($count);
+        return new Product($count, $productId);
     }
 
     /**
