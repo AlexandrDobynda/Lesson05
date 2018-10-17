@@ -26,6 +26,8 @@ class BasketPrices extends Basket
             $discountPrice = round($tag->price * $this->getUserAndSaleDiscounts() * (100 - $tag->discount) / 100,
                 2);
             $tag->discountPrise = $discountPrice;
+            $tag->fullPrice = $tag->price * $tag->quantity;
+            $tag->fullDiscountPrise = $discountPrice * $tag->quantity;
         }
     }
 
@@ -33,8 +35,8 @@ class BasketPrices extends Basket
     {
         foreach ($this->goods as $good => $tag) {
             $this->count += $tag->quantity;
-            $this->sum += $tag->price * $tag->quantity;
-            $this->discountSum += $tag->discountPrise * $tag->quantity;
+            $this->sum += $tag->fullPrice;
+            $this->discountSum += $tag->fullDiscountPrise;
         }
     }
 
@@ -44,8 +46,8 @@ class BasketPrices extends Basket
 
         foreach ($this->goods as $good => $tag) {
             echo '#' . $good . ': ' . $tag->productName . '(quantity:' . $tag->quantity . ')';
-            echo ', full price: ' . $tag->price * $tag->quantity;
-            echo '/with discount: ' . $tag->discountPrise * $tag->quantity . '<br>';
+            echo ', full price: ' . $tag->fullPrice;
+            echo '/with discount: ' . $tag->fullDiscountPrise . '<br>';
         }
         echo '<br>';
     }
