@@ -1,24 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexandr
- * Date: 17.10.2018
- * Time: 11:48
- */
+
 
 namespace Lesson05;
 
-
+/**
+ * Class Product
+ * @package Lesson05
+ */
 class Product
 {
-    public $id = 1;
-    public $productName = 'nameSample';
-    public $price = 500;
-    public $discount = 5;
-    public $quantity = 1;
+    /**
+     * @var int $id
+     * @var string $productName
+     * @var int $price
+     * @var int $discount
+     * @var int $quantity
+     */
+    public $id;
+    public $productName;
+    public $price;
+    public $discount;
+    public $quantity;
 
-    public function __construct($quantity)
+    public function __construct(int $id, string $productName, int $price, int $discount, int $quantity)
     {
+        $this->id = $id;
+        $this->productName = $productName;
+        $this->price = $price;
+        $this->discount = $discount;
         $this->quantity = $quantity;
     }
 }

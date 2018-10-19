@@ -9,6 +9,17 @@ require_once('BasketPrices.php');
 require_once('UserBasket.php');
 
 
+
+if (!isset($_COOKIE['test'])) {
+    setcookie('test', 1, time() + 60);
+} else {
+    setcookie('test', ($_COOKIE['test'] + 1),time() + 60);
+}
+
+echo $_COOKIE['test'];
+
+echo '<br>';
+
 $test = new UserBasket(1);
 $test2 = new UserBasket(1);
 
